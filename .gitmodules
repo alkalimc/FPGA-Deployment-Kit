@@ -1,0 +1,27 @@
+[submodule "Dependent/GPTQModel"]
+	path = Dependent/GPTQModel
+	url = https://github.com/ModelCloud/GPTQModel
+[submodule "Dependent/AutoAWQ"]
+	path = Dependent/AutoAWQ
+	url = https://github.com/casper-hansen/AutoAWQ
+[submodule "Dependent/llmc"]
+	path = Dependent/llmc
+	url = https://github.com/ModelTC/llmc
+[submodule "Dependent/lm-evaluation-harness"]
+	path = Dependent/lm-evaluation-harness
+	url = https://github.com/EleutherAI/lm-evaluation-harness
+[submodule "Dependent/evalplus"]
+	path = Dependent/evalplus
+	url = https://github.com/evalplus/evalplus
+[submodule "Dependent/opencompass"]
+	path = Dependent/opencompass
+	url = https://github.com/open-compass/opencompass
+[submodule "Dependent/vllm"]
+	path = Dependent/vllm
+	url = https://github.com/vllm-project/vllm
+[submodule "Dependent/sglang"]
+	path = Dependent/sglang
+	url = https://github.com/sgl-project/sglang
+[submodule "Dependent/Compiler-VCU128"]
+	path = Dependent/Compiler-VCU128
+	url = https://github.com/wdkkkkkkkkkk/Compiler-VCU128
