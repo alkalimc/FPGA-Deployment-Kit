@@ -49,8 +49,8 @@ done
 echo "正在初始化部署环境"
 
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
-FDK_DIR="$SCRIPT_DIR/../.."
-PARENT_DIR="$FDK_DIR/.."
+FDK_DIR="$(realpath "$SCRIPT_DIR/../..")"
+PARENT_DIR="$(realpath "$FDK_DIR/..")"
 
 ENVIRONMENT_FILE="$FDK_DIR/.env"
 GIT_IGNORE_FILE="$FDK_DIR/.gitignore"
@@ -473,29 +473,55 @@ echo "FDK_VERSION=$FDK_VERSION" > "$ENVIRONMENT_FILE"
 echo "FDK_VERSION_TYPE=$FDK_VERSION_TYPE" >> "$ENVIRONMENT_FILE"
 echo "PYTHON_VERSION=$PYTHON_VERSION" >> "$ENVIRONMENT_FILE"
 echo "PYPI_MIRROR=$PYPI_MIRROR" >> "$ENVIRONMENT_FILE"
+if [ -n "$HF_ENDPOINT" ]; then
+    echo "HF_ENDPOINT=$HF_ENDPOINT" >> "$ENVIRONMENT_FILE"
+fi
+
+echo >> "$ENVIRONMENT_FILE"
+echo "################################################################" >> "$ENVIRONMENT_FILE"
+echo >> "$ENVIRONMENT_FILE"
+
+echo "#DATE=$DATE" >> "$ENVIRONMENT_FILE"
+echo "#TIME=$TIME" >> "$ENVIRONMENT_FILE"
+echo "#DEPLOYMENT_LOG_FILE=$DEPLOYMENT_LOG_FILE" >> "$ENVIRONMENT_FILE"
+if [ -n "$ENVIRONMENT_BACKUP_FILE" ]; then
+    echo "#ENVIRONMENT_BACKUP_FILE=$ENVIRONMENT_BACKUP_FILE" >> "$ENVIRONMENT_FILE"
+fi
+
+echo >> "$ENVIRONMENT_FILE"
+echo "################################################################" >> "$ENVIRONMENT_FILE"
+echo >> "$ENVIRONMENT_FILE"
 
 echo "SCRIPT_DIR=$SCRIPT_DIR" >> "$ENVIRONMENT_FILE"
 echo "FDK_DIR=$FDK_DIR" >> "$ENVIRONMENT_FILE"
 echo "PARENT_DIR=$PARENT_DIR" >> "$ENVIRONMENT_FILE"
 
+echo >> "$ENVIRONMENT_FILE"
+
 echo "ENVIRONMENT_FILE=$ENVIRONMENT_FILE" >> "$ENVIRONMENT_FILE"
 echo "GIT_IGNORE_FILE=$GIT_IGNORE_FILE" >> "$ENVIRONMENT_FILE"
 echo "GIT_MODULES_FILE=$GIT_MODULES_FILE" >> "$ENVIRONMENT_FILE"
+
+echo >> "$ENVIRONMENT_FILE"
 
 echo "REPOSITORIES_DIR=$REPOSITORIES_DIR" >> "$ENVIRONMENT_FILE"
 echo "BACKUPS_DIR=$BACKUPS_DIR" >> "$ENVIRONMENT_FILE"
 echo "AUTO_BACKUPS_DIR=$AUTO_BACKUPS_DIR" >> "$ENVIRONMENT_FILE"
 echo "LOGS_DIR=$LOGS_DIR" >> "$ENVIRONMENT_FILE"
 
-echo "DATE=$DATE" >> "$ENVIRONMENT_FILE"
-echo "TIME=$TIME" >> "$ENVIRONMENT_FILE"
-echo "DEPLOYMENT_LOG_FILE=$DEPLOYMENT_LOG_FILE" >> "$ENVIRONMENT_FILE"
+echo >> "$ENVIRONMENT_FILE"
+echo "################################################################" >> "$ENVIRONMENT_FILE"
+echo >> "$ENVIRONMENT_FILE"
 
 echo "PATH=$PATH" >> "$ENVIRONMENT_FILE"
 echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> "$ENVIRONMENT_FILE"
 echo "CUDA_PATH=$CUDA_PATH" >> "$ENVIRONMENT_FILE"
 
 echo "CONDA_DIR=$CONDA_DIR" >> "$ENVIRONMENT_FILE"
+
+echo >> "$ENVIRONMENT_FILE"
+echo "################################################################" >> "$ENVIRONMENT_FILE"
+echo >> "$ENVIRONMENT_FILE"
 
 if [ -n "$http_proxy" ]; then
     echo "http_proxy=$http_proxy" >> "$ENVIRONMENT_FILE"
@@ -504,17 +530,15 @@ if [ -n "$http_proxy" ]; then
     echo "https_proxy=$https_proxy" >> "$ENVIRONMENT_FILE"
 fi
 
-if [ -n "$HF_ENDPOINT" ]; then
-    echo "HF_ENDPOINT=$HF_ENDPOINT" >> "$ENVIRONMENT_FILE"
-fi
+echo >> "$ENVIRONMENT_FILE"
+echo "################################################################" >> "$ENVIRONMENT_FILE"
+echo >> "$ENVIRONMENT_FILE"
+
 echo "HUGGING_FACE_TOKEN=$HUGGING_FACE_TOKEN" >> "$ENVIRONMENT_FILE"
 
+echo >> "$ENVIRONMENT_FILE"
+
 echo "ENVIRONMENT_DIR=$ENVIRONMENT_DIR" >> "$ENVIRONMENT_FILE"
-
-if [ -n "$ENVIRONMENT_BACKUP_FILE" ]; then
-    echo "ENVIRONMENT_BACKUP_FILE=$ENVIRONMENT_BACKUP_FILE" >> "$ENVIRONMENT_FILE"
-fi
-
 echo "PYTHON_DIR=$PYTHON_DIR" >> "$ENVIRONMENT_FILE"
 echo "PIP_DIR=$PIP_DIR" >> "$ENVIRONMENT_FILE"
 echo "DEPENDENT_DIR=$DEPENDENT_DIR" >> "$ENVIRONMENT_FILE"
