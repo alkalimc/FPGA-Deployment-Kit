@@ -1,3 +1,4 @@
+#!/bin/bash
 # Powered by QiGao
 # Copyright 2025- alkali. All Rights Reserved.
 ################################################################
